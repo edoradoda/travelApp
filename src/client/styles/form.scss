@@ -1,0 +1,107 @@
+form {
+    // border: 1px solid #545454;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:20px;
+    border-radius: 3px;
+    padding: 40px;
+}
+
+.input_  {
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+    border-color: #74abb1;
+}
+
+.input_:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #b8d5a8;
+ }
+
+
+ %inputStyle {
+        box-shadow: inset 0px 0px 14px -3px #f0efda;
+        background: linear-gradient(to bottom, #e0dfbb 5%, #f7f8e5 100%);
+        background-color: #c5c5a9;
+        border-radius: 10px;
+        border: 1px solid #dbd78c;
+        display: inline-block;
+        cursor: pointer;
+        color: #b3b316;
+        font-weight: bold;
+        padding: 3px 24px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #d9cc41;
+ }
+
+.button {
+     @extend %inputStyle;
+ }
+
+.button:active {
+    position: relative;
+    top: 1px;
+}
+
+.button:hover {
+    background: linear-gradient(to bottom, #f7f8e5 5%, #e0dfbb 100%);
+    background-color: #f6f7de;
+}
+
+
+.language {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    select{
+        @extend %inputStyle;
+    }
+
+    select:active {
+        position: relative;
+        top: 1px;
+    }
+
+    select:hover {
+        background: linear-gradient(to bottom, #f7f8e5 5%, #e0dfbb 100%);
+        background-color: #f6f7de;
+    }
+
+}
+
+#results {
+    background-color: aliceblue;
+    border-radius: 5px;
+    padding: 10px;
+    width: 96%;
+}
+
+
+.sectionResult {
+    padding-left: 43px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.error {
+    border-color: #dc2915;
+    box-shadow: 2px 2px 2px 1px RGB(255 0 0 / 20%);
+}
+
+.ok {
+    border-color: #15dc36;
+    box-shadow: 2px 2px 2px 1px RGB(119 221 119 / 20%);
+}
+
+.divError {
+    color:red;
+    background-color: white;
+    font-size: smaller;
+}
+  

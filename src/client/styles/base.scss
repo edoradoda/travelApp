@@ -1,11 +1,13 @@
 body {
-    background-color: #c4e1e9;
-    font-family: monospace;
+    background-color:white;
+    font-family: arial;
+    font-size: 13px;
 }
+
 
 .wrapper {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 5px;
     grid-template-areas:
       "header"
       "nav"
@@ -13,59 +15,142 @@ body {
       "sidebar"
       "ad"
       "footer";
+    background-color: #e6e6ee;
   }
 
 
 .main-head {
     grid-area: header;
-        // box-shadow: 0 4px 0px 0 rgb(228 224 175 / 20%);
-        box-shadow: 2px 2px 2px 1px rgba(187, 212, 215, 0.3);
+    box-shadow: 2px 2px 2px 1px rgba(187, 212, 215, 0.3);
+    background-image: url('../images/banner.jpg');
+    background-size: 100% 150px;
+    background-repeat: no-repeat;
+    background-size: 100% 150px;
+    height: 150px;
   }
   .content {
     grid-area: content;
   }
   .main-nav {
     grid-area: nav;
+    background-color: white;
+    /* height: 33px; */
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3px;
   }
   .side {
     grid-area: sidebar;
+    background-color: #e6e6ee;
   }
   .ad {
     grid-area: ad;
+    background-color: #e6e6ee;
   }
+
   .main-footer {
     grid-area: footer;
+    height: 150px;
+    background-color: #9c9c9c38;
+    display: flex;
+    justify-content: center;
+    border-top: 5px solid white;
+  }
+
+
+  .nestedGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "img" 
+    "dataTrip"
+    "options"  
+    "weather";
+    grid-auto-flow: row;
+    grid-template-rows: 150px 150px;
+    grid-gap: 10px;
+    background-color: #e6e6ee;
+    padding: 8px;
+  }
+
+  .imgCity {
+    grid-area: img;
+  }
+  .dataTrip {
+    grid-area: dataTrip;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .options {
+    grid-area: options;
+  }
+  .weather {
+    grid-area: weather;
+    padding-top: 5px;
+  }
+
+  .flightInfo {
+    display: flex;
   }
 
 
 
-  @media (min-width: 500px) {
-    .wrapper {
-      grid-template-columns: 1fr 3fr;
+  .card {
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  .nestedCard {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: left;
+  }
+
+  .photoBox {
+    width: 100%;
+    height: 100%;
+  }
+  
+  @media (min-width: 350px) {
+    .nestedGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr ;
       grid-template-areas:
-        "header  header"
-        "nav     nav"
-        "sidebar content"
-        "ad      footer";
-    }
-    nav ul {
-      display: flex;
-      justify-content: space-between;
+          "img dataTrip"
+          "options  weather";
     }
   }
 
 
-  @media (min-width: 700px) {
+  @media (min-width: 900px){
+    
     .wrapper {
-      grid-template-columns: 1fr 4fr 1fr;
+      display: grid;
+      grid-gap: 5px;
       grid-template-areas:
-        "header header  header"
-        "nav    content sidebar"
-        "nav    content ad"
-        "footer footer  footer";
-        grid-template-rows: 100px 300px 300px 100px;
-     }
-     nav ul {
-       flex-direction: column;
-     }
+        "header header header"
+        "nav nav nav"
+        "sidebar content ad "
+        "footer footer footer";
+    }
+
+    .main-head {
+      background-size: 100% 200px;
+      height: 172px;
+    }
+
+    .title {
+      font-size:50px
+    }
+
+    .main-nav {
+      justify-content: center;
+      gap: 184px;
+    }
   }
+ 

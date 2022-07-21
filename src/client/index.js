@@ -8,10 +8,18 @@ import './styles/base.scss'
 import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
-import  Logo from './images/logo.png';
+import  Logo from './images/paris.jpg';
+import  Favicon from './images/favicon.png';
 
-const element= document.getElementById("logo");
+const element= document.getElementById("img1");
 element.src=Logo;
+    // <link rel="icon" type="image/x-icon" href=""> 
+
+const link = document.createElement('link');
+link.href = Favicon;
+link.rel = 'icon';
+link.type = 'image/x-icon';
+document.getElementsByTagName('head')[0].appendChild(link);
 
 export {
     handleSubmit,

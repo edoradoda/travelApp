@@ -5,29 +5,65 @@
         <title>Test</title>
         <meta  charset="utf-8">  
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
-        <title>Sentiment-analysis</title>
+        <title>Travel Planner</title>
     </head>
 
     <body>
         <div class="wrapper">
             <header  class="main-head">
-                <div class="logoBox">
-                    <img id="logo" src="" alt="Avatar" class="logoBox">
-                </div>
-                <span class="tittle">Sentiment Analysis</span>
+                <span class="tittle">Travel Planner</span>
             </header>
-            <nav class="main-nav">
-                <!-- <ul>
-                    <li><a href="">Nav 1</a></li>
-                    <li><a href="">Nav 2</a></li>
-                    <li><a href="">Nav 3</a></li>
-                </ul> -->
+            <nav class="main-nav"> 
+                <span class="strongText">My trips </span>  
+                <a class="optionsButton" href="blogPost.html">
+                    <div class="plus icon"></div>
+                     <span class="iconSpan">add trip</span> 
+                </a>
             </nav>
-
             <main class="content">
-                <section>
+                <div class="nestedGrid">
+                            <div class="imgCity">
+                                <img id="img1" src='' alt="Avatar" class="photoBox">
+                            </div>
+                            <div class="dataTrip">
+                                <h4 class="subTitle"><strong>My trip to: Paris,France</strong></h4> 
+                                <h4 class="subTitle"><strong>Departing: 02/12/2222</strong></h4> 
+                                <div class="flightInfo">
+                                    <span class="strongText">
+                                        Flight info 
+                                    </span>
+                                    <p> lorem   erswaer rwerew rwerwer <br> aedfadf asdfsadf</p>
+                                </div>
+                                <div class="buttons">
+                                    <a class="greenButton" href="blogPost.html">Save Trip</a>
+                                    <a class="greenButton" href="blogPost.html">Remove Trip</a>
+                                </div>
+                            </div>
+                            <div class="options">
+                                <a class="optionsButton" href="blogPost.html">
+                                    <div class="plus icon"></div>
+                                     <span class="iconSpan">add lodging info</span> 
+                                </a>
+                                <a class="optionsButton" href="blogPost.html">
+                                    <div class="plus icon"></div>
+                                     <span class="iconSpan">add packing list</span> 
+                                </a>
+                            </div>
+                            <div class="weather">
+                                <span>Paris, France is 220 days away</span>
+                                <br><br>
+                                <span>Tipical weather for then is:</span>
+                                <br>
+                                <span class="smallText">High - 46 , low - 23 </span>
+                                <br>
+                                <span class="smallText">Mostly cloudy throughout the day</span>
+                            </div>
+                             
+
+                   
+                
+<!--       
                     <form class="form" onsubmit="Client.handleSubmit(event)">
-                        <!-- <input id="name" type="text" name="input" value=""  placeholder="Name"> -->
                         <div >
                             <textarea name="name"  id="name" rows="10" cols="100" class="input_"  placeholder="Write something here!"  onkeyup="Client.removeError()" ></textarea>
                             <label id='msjError' class="divError"></label>
@@ -41,27 +77,32 @@
                               </select>
                         </div>
                         <input type="submit" name="" value="Analyze"  onclick="Client.handleSubmit(event)" onsubmit="Client.handleSubmit(event)" class="button">
-                    </form>
-                </section>
-
-                <section class="sectionResult">
-                    <strong>Results:</strong>
-                    <div id="results">
-
-                    </div>
-                </section>
+                    </form> -->
+              
+            </div>
             </main>
-            <footer class="main-footer"></footer>
+            <div class="splite"></div>
+            <footer class="main-footer">
+                <div class="footerOptions">
+                    <div class="grid-item"><label for="tripTo">My trip to :</label></div>
+                    <div class="grid-item"><input type="text" id="tripTo" name="tripTo"  placeholder="Enter location"></div>
+                    <div class="grid-item"><label for="departing">Departing :</label></div>  
+                    <div class="grid-item"><input type="text" id="departing" name="departing"  placeholder="MM/DD/YYYY"></div>
+                    <div class="grid-item">  <a class="greenButton" href="blogPost.html">Save Trip</a></div>
+                    <div class="grid-item"> <a class="greenButton" href="blogPost.html">Remove Trip</a></div>  
+                </div>
+               
+            </footer>
         </div>
     </body>
     <script>
         // Check that service workers are supported
-        if ('serviceWorker' in navigator) {
-            // Use the window load event to keep the page load performant
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js');
-            });
-        }
+        // if ('serviceWorker' in navigator) {
+        //     // Use the window load event to keep the page load performant
+        //     window.addEventListener('load', () => {
+        //         navigator.serviceWorker.register('/service-worker.js');
+        //     });
+        // }
        </script>
 </html>
 

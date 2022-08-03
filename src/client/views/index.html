@@ -15,85 +15,122 @@
             </header>
             <nav class="main-nav"> 
                 <span class="strongText">My trips </span>  
-                <a class="optionsButton" href="blogPost.html">
+                <a id="addTrip" class="optionsButton" href="blogPost.html">
                     <div class="plus icon"></div>
                      <span class="iconSpan">add trip</span> 
                 </a>
             </nav>
             <main class="content">
-                <div class="nestedGrid">
-                            <div class="imgCity">
-                                <img id="img1" src='' alt="Avatar" class="photoBox">
-                            </div>
-                            <div class="dataTrip">
-                                <h4 class="subTitle"><strong>My trip to: Paris,France</strong></h4> 
-                                <h4 class="subTitle"><strong>Departing: 02/12/2222</strong></h4> 
-                                <div class="flightInfo">
-                                    <span class="strongText">
-                                        Flight info 
-                                    </span>
-                                    <p> lorem   erswaer rwerew rwerwer <br> aedfadf asdfsadf</p>
-                                </div>
-                                <div class="buttons">
-                                    <a class="greenButton" href="blogPost.html">Save Trip</a>
-                                    <a class="greenButton" href="blogPost.html">Remove Trip</a>
-                                </div>
-                            </div>
-                            <div class="options">
-                                <a class="optionsButton" href="blogPost.html">
-                                    <div class="plus icon"></div>
-                                     <span class="iconSpan">add lodging info</span> 
-                                </a>
-                                <a class="optionsButton" href="blogPost.html">
-                                    <div class="plus icon"></div>
-                                     <span class="iconSpan">add packing list</span> 
-                                </a>
-                            </div>
-                            <div class="weather">
-                                <span>Paris, France is 220 days away</span>
-                                <br><br>
-                                <span>Tipical weather for then is:</span>
-                                <br>
-                                <span class="smallText">High - 46 , low - 23 </span>
-                                <br>
-                                <span class="smallText">Mostly cloudy throughout the day</span>
-                            </div>
-                             
+                <!-- <div class="nestedGrid">
+                    <div class="imgCity">
+                        <img id="img1" src='' alt="Avatar" class="photoBox">
+                    </div>
+                    <div class="dataTrip">
+                        <h4 class="subTitle"><strong>My trip to: Paris,France</strong></h4> 
+                        <h4 class="subTitle"><strong>Departing: 02/12/2222</strong></h4> 
+                        <div class="flightInfo">
+                            <span class="strongText">
+                                Flight info 
+                            </span>
+                            <p> lorem   erswaer rwerew rwerwer <br> aedfadf asdfsadf</p>
+                        </div>
+                        <div class="buttons">
+                            <a class="greenButton" href="blogPost.html">Save Trip</a>
+                            <a class="greenButton" href="blogPost.html">Remove Trip</a>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <a class="optionsButton" href="blogPost.html">
+                            <div class="plus icon"></div>
+                                <span class="iconSpan">add lodging info</span> 
+                        </a>
+                        <a class="optionsButton" href="blogPost.html">
+                            <div class="plus icon"></div>
+                                <span class="iconSpan">add packing list</span> 
+                        </a>
+                    </div>
+                    <div class="weather">
+                        <span>Paris, France is 220 days away</span>
+                        <br><br>
+                        <span>Tipical weather for then is:</span>
+                        <br>
+                        <span class="smallText">High - 46 , low - 23 </span>
+                        <br>
+                        <span class="smallText">Mostly cloudy throughout the day</span>
+                    </div>
+                </div> -->
 
-                   
+
                 
-<!--       
-                    <form class="form" onsubmit="Client.handleSubmit(event)">
-                        <div >
-                            <textarea name="name"  id="name" rows="10" cols="100" class="input_"  placeholder="Write something here!"  onkeyup="Client.removeError()" ></textarea>
-                            <label id='msjError' class="divError"></label>
-                        </div>
-                        
-                        <div class="language">
-                            <label for="lang">Language</label>
-                            <select name="lang" id="lang">
-                                <option value="en" selected>English</option>
-                                <option value="es" >Español</option>
-                              </select>
-                        </div>
-                        <input type="submit" name="" value="Analyze"  onclick="Client.handleSubmit(event)" onsubmit="Client.handleSubmit(event)" class="button">
-                    </form> -->
-              
-            </div>
             </main>
             <div class="splite"></div>
             <footer class="main-footer">
                 <div class="footerOptions">
-                    <div class="grid-item"><label for="tripTo">My trip to :</label></div>
-                    <div class="grid-item"><input type="text" id="tripTo" name="tripTo"  placeholder="Enter location"></div>
+                    <div class="grid-item"><label for="city">My trip to :</label></div>
+                    <div class="grid-item">
+                        <input list="country" id="countryList" name="country"  onchange="Client.countrySelected(this)"  placeholder="Enter country" />
+                        <datalist id="country" ></datalist>
+                        <input list="city" id="cityList"  name="city" onkeyup="Client.validateCity()"  onchange="Client.citySelected(this)"  placeholder="Enter city" />
+                        <datalist id="city" ></datalist>
+                        <label id="msjErrorCity" class="divError"></label>
+                    </div>
                     <div class="grid-item"><label for="departing">Departing :</label></div>  
-                    <div class="grid-item"><input type="text" id="departing" name="departing"  placeholder="MM/DD/YYYY"></div>
-                    <div class="grid-item">  <a class="greenButton" href="blogPost.html">Save Trip</a></div>
-                    <div class="grid-item"> <a class="greenButton" href="blogPost.html">Remove Trip</a></div>  
+                    <div class="grid-item">
+                        <input type="date" id="departing" name="departing" value=""   min="2022-07-28" max="2030-12-31"  
+                        onchange="Client.handlerDate(event)" >
+                    </div>
+                    <div class="grid-item"> <input type="button" class="greenButton" onclick="Client.saveTrip()" value="Save Trip"></div>
+                    <div class="grid-item"> 
+                        <input type="button" class="greenButton" onclick="Client.removeTrip()" value="Remove Trip">
+                        <label id="msjResult" class="msjResult" ></label>
+                    </div>  
+
                 </div>
                
             </footer>
         </div>
+
+        <template id="template-card">
+            <div class="nestedGrid">
+                <div class="imgCity">
+                    <img id="img1" src='' alt="Avatar" class="photoBox">
+                </div>
+                <div class="dataTrip">
+                    <h4 class="subTitle">My trip to: Paris,France</h4> 
+                    <h4 class="subTitle">Departing: 02/12/2222</h4> 
+                    <div class="flightInfo">
+                        <span class="strongText">
+                            Flight info 
+                        </span>
+                        <p> lorem   erswaer rwerew rwerwer <br> aedfadf asdfsadf</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="greenButton" href="blogPost.html">Save Trip</a>
+                        <a class="greenButton" href="blogPost.html">Remove Trip</a>
+                    </div>
+                </div>
+                <div class="options">
+                    <a class="optionsButton" href="blogPost.html">
+                        <div class="plus icon"></div>
+                            <span class="iconSpan">add lodging info</span> 
+                    </a>
+                    <a class="optionsButton" href="blogPost.html">
+                        <div class="plus icon"></div>
+                            <span class="iconSpan">add packing list</span> 
+                    </a>
+                </div>
+                <div class="weather">
+                    <span>Paris, France is 220 days away</span>
+                    <br><br>
+                    <span>Tipical weather for then is:</span>
+                    <br>
+                    <span class="smallText">High - 46 , low - 23 </span>
+                    <br>
+                    <span class="smallText">Mostly cloudy throughout the day</span>
+                </div>
+            </div>
+
+        </template>
     </body>
     <script>
         // Check that service workers are supported

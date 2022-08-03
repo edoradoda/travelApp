@@ -15,7 +15,6 @@ body {
       "sidebar"
       "ad"
       "footer";
-    background-color: #e6e6ee;
   }
 
 
@@ -52,8 +51,8 @@ body {
 
   .main-footer {
     grid-area: footer;
-    height: 150px;
-    background-color: #9c9c9c38;
+    height: 180px;
+    background-color: #09141d38;;
     display: flex;
     justify-content: center;
     border-top: 5px solid white;
@@ -71,8 +70,10 @@ body {
     grid-auto-flow: row;
     grid-template-rows: 150px 150px;
     grid-gap: 10px;
-    background-color: #e6e6ee;
+    background-color: #f1eff4;
     padding: 8px;
+    box-shadow: 2px 3px 5px 0px #bbcce0;
+    margin-top: 10px;
   }
 
   .imgCity {
@@ -86,6 +87,9 @@ body {
   }
   .options {
     grid-area: options;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
   }
   .weather {
     grid-area: weather;

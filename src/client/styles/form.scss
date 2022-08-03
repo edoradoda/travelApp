@@ -48,7 +48,7 @@ input:focus {
 
 .greenButton {
   box-shadow: inset 0px 0px 14px -3px #bbcce0;
-  background: linear-gradient(to bottom, #e8f3f9 5%, #b6d4cc 100%);
+  background: linear-gradient(to bottom, #e8f3f9 5%, #81d67b 100%);
   border-radius: 2px;
   border: 1px solid #c2d1d9;
   display: inline-block;
@@ -61,7 +61,7 @@ input:focus {
   }
 
   %butonHover {
-    background: linear-gradient(to bottom, #d9e5f3 5%, #92c4db 100%);
+    background: linear-gradient(to bottom, #d9e5f3 5%, #cdf0c9 100%);
     background-color: rgba(0, 0, 0, 0);
     background-color: #ecf7de;
   }
@@ -81,7 +81,11 @@ input:focus {
     font-weight: bold;
     padding: 3px 7px;
     text-decoration: none;
-    // margin-top: 10px;
+    width: 140px;
+  }
+
+  #addTrip {
+    width: 95px;
   }
 
   .optionsButton:hover {
@@ -101,6 +105,13 @@ input:focus {
     color:red;
     background-color: white;
     font-size: smaller;
+}
+
+
+.msjResult {
+  color:rgb(25, 109, 42);
+  background-color: white;
+  font-size: smaller;
 }
 
 
@@ -145,3 +156,5 @@ input:focus {
   .strongText {
     font-weight: 700;
   }
+
+  

@@ -19,12 +19,34 @@ const link = document.createElement('link');
 link.href = Favicon;
 link.rel = 'icon';
 link.type = 'image/x-icon';
+
 document.getElementsByTagName('head')[0].appendChild(link);
 
 
 
+const content = document.querySelector(".content");
+
+content.addEventListener("click",e=>{
+    btnAction(e);
+})
+
+
+// Personal API Key for OpenWeatherMap API
+const apiKey = '50b167ff30e937171afa4f012fd8323e&units=imperial';//units=metric Celsius
+//loadd data
+let requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+  
+  const dataCities = JSON.parse(localStorage.getItem('cities'))
+  const dataCountries = JSON.parse(localStorage.getItem('countries'))
+  let  trips = JSON.parse(localStorage.getItem('trips'))
+ 
 const selectCountry = document.querySelector("#country");
 const selectCity = document.querySelector("#city");
+
+
 
 const countrySelected = (country) => {
   const dataCities = JSON.parse(localStorage.getItem('cities'))
@@ -42,8 +64,8 @@ const addCities = (dataCities) => {
  
 };
 
-// Personal API Key for OpenWeatherMap API
-const apiKey = '50b167ff30e937171afa4f012fd8323e&units=imperial';//units=metric Celsius
+
+
 
 
 /* Function to GET Web API Data*/
@@ -60,13 +82,10 @@ const getGeocoding = async (url)=>{
 
 
 const citySelected = (city) => {
-    console.log("city selected",city.value);
     getGeocoding( `http://api.openweathermap.org/geo/1.0/direct?q=${city.value}&limit=5&appid=${apiKey}`)
     .then(response => {
-        console.log("response",response)
         getGeocoding( `http://api.geonames.org/findNearByWeatherJSON?lat=${response[0].lat}&lng=${response[0].lon}&username=edoradoda`)
         .then(result=>{
-            console.log("result",result)
             if(result.weatherObservation != undefined){
                 localStorage.setItem('weather',JSON.stringify(result.weatherObservation))
             }
@@ -76,21 +95,30 @@ const citySelected = (city) => {
   
   };
 
-  const showTrips = (trips) => {
-    const content = document.querySelector(".content");
+
+  selectCountry.addEventListener("onchange", countrySelected);
+  selectCity.addEventListener("onchange", citySelected);
+
+  const showTrips = () => {
+    let  trips = JSON.parse(localStorage.getItem('trips'))
     let fragment = document.createDocumentFragment();
     const template = document.querySelector("#template-card").content;
-    trips.forEach((item) => {
-        console.log("item",item)
+    content.innerHTML = '';
+    trips.forEach((item,index) => {
         template.querySelectorAll(".nestedGrid .dataTrip .subTitle")[0].textContent = `My trip to : ${item.city}, ${item.country} `;
         template.querySelectorAll(".nestedGrid .dataTrip .subTitle")[1].textContent = `Departing : ${item.departing}`;
-        console.log("log",template.querySelectorAll(".nestedGrid .dataTrip .subTitle"));
+        template.querySelectorAll(".nestedGrid .dataTrip .subTitle")[1].textContent = `Departing : ${item.departing}`;
+        // template.querySelectorAll("img").setAttribute("src",producto.imgUrl)
+        template.querySelectorAll(".nestedGrid .dataTrip .buttons .greenButton")[1].dataset.id = index;
         const clone = template.cloneNode(true);
         fragment.appendChild(clone);
     });
 
     content.appendChild(fragment);
 };
+
+
+
 
 const saveTrip = () => {
     const country = document.getElementById('countryList');
@@ -111,7 +139,10 @@ const saveTrip = () => {
     }
 
     if(msj == ''){
-        let trips = []
+        let  trips = JSON.parse(localStorage.getItem('trips'))
+        if(trips == null){
+            trips =[]
+        }
         const trip= {
                 country:country.value,
                 city:city.value,
@@ -123,22 +154,49 @@ const saveTrip = () => {
         trips.push(trip);
         localStorage.setItem('trips',JSON.stringify(trips))
         msj ="Successfully saved trip! ";
-        showTrips(trips);
-
-
+        showTrips();
+        showMsj(msj)
     }
+};
 
+const showMsj = (msj) => {
     const msjError = document.getElementById('msjResult');
-    var newContent = document.createTextNode(msj);
+    let newContent = document.createTextNode(msj);
     msjError.innerHTML=''; 
     msjError.appendChild(newContent); //añade texto al div creado.
-    console.log("datois",country.value,city.value,date.value)
 };
 
-const removeTrip = (event) => {
- 
-    // localStorage.setItem('date',JSON.stringify(date.value))
+
+const removeTrip = (city,country) => {
+    let  trips = JSON.parse(localStorage.getItem('trips'))
+    trips = trips.filter(trip => trip.city != city && trip.country != country);
+    localStorage.setItem('trips',JSON.stringify(trips))
+    const msj = `Trip to ${city},${country} remove successfully! `;
+    showMsj(msj);
 };
+
+
+const scrollTo = id =>{
+    location.href = "#";
+    location.href = `#${id}`;
+}
+
+const btnAction = e => {
+    let  trips = JSON.parse(localStorage.getItem('trips'))
+    console.log("event = ",e.target.value , e.target.dataset.id)
+    if(e.target.value == "Remove Trip"){
+        console.log("trips",trips[e.target.dataset.id])
+        removeTrip(trips[e.target.dataset.id].city,trips[e.target.dataset.id].country)
+    }else if(e.target.value == "Save Trip"){
+        console.log("Save Trip")
+        scrollTo("saveTrip")
+    }
+    showTrips()
+    e.stopPropagation()
+}
+
+
+
 const handlerDate = (event) => {
     // console.log("date selected",event.target.value)
     const date = document.getElementById("departing");
@@ -182,8 +240,6 @@ const validateCity = () => {
 
 
 
-  selectCountry.addEventListener("onchange", countrySelected);
-  selectCity.addEventListener("onchange", citySelected);
 
 const addCountries = (dataCountries) => {
     for (const dataCountry of dataCountries) {
@@ -194,15 +250,8 @@ const addCountries = (dataCountries) => {
 };
 
 
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  
-  const dataCities = JSON.parse(localStorage.getItem('cities'))
-  const dataCountries = JSON.parse(localStorage.getItem('countries'))
-//   console.log("dataCities",dataCities)
-//   console.log("dataCountries",dataCountries)
+
+
 
   if(dataCities == null){
     fetch("https://countriesnow.space/api/v0.1/countries", requestOptions)
@@ -227,12 +276,13 @@ var requestOptions = {
     })
     .catch(error => console.log('error', error));
   }else {
-    console.log("adding countries")
     addCountries(dataCountries)
-
   }
 
 
+  if(trips != undefined && trips.length >0){
+    showTrips();
+  }
 
  
 
@@ -249,6 +299,7 @@ export {
     removeTrip,
     validateCity,
     handlerDate,
+    scrollTo,
 
 }
 

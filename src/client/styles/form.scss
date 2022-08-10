@@ -109,7 +109,7 @@ input:focus {
 
 
 .msjResult {
-  color:rgb(25, 109, 42);
+  color:#1faf26;
   background-color: white;
   font-size: smaller;
 }
@@ -157,4 +157,7 @@ input:focus {
     font-weight: 700;
   }
 
+  .expired {
+    color:red
+  }
   

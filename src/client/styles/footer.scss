@@ -12,6 +12,10 @@
 //   }
   .grid-item {
     padding: 2px;
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+    align-items: center;
   }
 
 

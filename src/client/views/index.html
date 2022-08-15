@@ -28,9 +28,9 @@
                 <div class="footerOptions">
                     <div class="grid-item"><label for="city">My trip to :</label></div>
                     <div class="grid-item">
-                        <input list="country" id="countryList" name="country"  onchange="Client.countrySelected(this)"  placeholder="Enter country" />
+                        <input list="country" id="countryList" name="country"  class="inputData" onchange="Client.countrySelected(this)"  placeholder="Enter country" />
                         <datalist id="country" ></datalist>
-                        <input list="city" id="cityList"  name="city" onkeyup="Client.validateCity()"  onchange="Client.citySelected(this)"  placeholder="Enter city" />
+                        <input list="city" id="cityList"  name="city"  class="inputData"  onkeyup="Client.validateCity()"  onchange="Client.citySelected(this)"  placeholder="Enter city" />
                         <datalist id="city" ></datalist>
                         <label id="msjErrorCity" class="divError"></label>
                     </div>
@@ -63,9 +63,9 @@
                     <h4 class="subTitle">Departing: 02/12/2222</h4> 
                     <div class="flightInfo">
                         <span class="strongText">
-                            Flight info 
+                            <!-- Flight info :  -->
                         </span>
-                        <p> lorem   erswaer rwerew rwerwer <br> aedfadf asdfsadf</p>
+                        <!-- <p> ... <br> </p> -->
                     </div>
                     <div class="buttons">
                         <input type="button" class="greenButton"  value="Save Trip">
@@ -73,11 +73,11 @@
                     </div>
                 </div>
                 <div class="options">
-                    <a class="optionsButton" href="blogPost.html">
+                    <a class="optionsButton" href="#">
                         <div class="plus icon"></div>
                             <span class="iconSpan">add lodging info</span> 
                     </a>
-                    <a class="optionsButton" href="blogPost.html">
+                    <a class="optionsButton" href="#">
                         <div class="plus icon"></div>
                             <span class="iconSpan">add packing list</span> 
                     </a>

@@ -6,4 +6,4 @@ const showMsj = (msj) => {
 };
 
 
-export {showMsj}
+export { showMsj }

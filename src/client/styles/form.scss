@@ -30,7 +30,9 @@ input:focus {
     box-shadow: 0 0 5px #a8cbd5;
  }
 
-
+.inputData {
+  width: 47%;
+}
 
 .button {
      @extend %inputStyle;

@@ -78,6 +78,7 @@ body {
 
   .imgCity {
     grid-area: img;
+    text-align: center;
   }
   .dataTrip {
     grid-area: dataTrip;
@@ -90,6 +91,8 @@ body {
     display: flex;
     flex-flow: column;
     gap: 5px;
+    justify-content: center;
+    align-items: center;
   }
   .weather {
     grid-area: weather;
@@ -116,7 +119,7 @@ body {
   }
 
   .photoBox {
-    width: 100%;
+    width: 60%;
     height: 100%;
   }
   
@@ -155,6 +158,11 @@ body {
     .main-nav {
       justify-content: center;
       gap: 184px;
+    }
+
+    .photoBox {
+      width: 60%;
+      height: 135%;
     }
   }
  

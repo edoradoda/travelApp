@@ -1,6 +1,8 @@
 import { getDataApi } from './getDataApi'
+
 // Personal API Key for OpenWeatherMap API
 const apiKey = '96fbd2cbb86b4bf7b93373c192290955';//units=metric Celsius
+
 
 const forecastWeather = (city,countryIso,date) => {
   return new Promise(function(resolve,reject){

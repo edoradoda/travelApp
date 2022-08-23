@@ -1,10 +1,12 @@
 import { forecastWeather } from './forecastWeather'
-import { currentWeather } from './currentWeather'
-import  GlobeTrotter from '../images/globeTrotter.jpg';
+import { pixabayImage } from './pixabayImage'
 
-const content = document.querySelector(".content");
+import { currentWeather } from './currentWeather'
+import  GlobeTrotter  from '../images/globeTrotter.jpg';
+
 
   const   showTrips =  async  () => {
+    const content = document.querySelector(".content");
     let  trips = JSON.parse(localStorage.getItem('trips'))
     const countTrips = trips.length;
     let fragment = document.createDocumentFragment(); // DOM nodes can be added to build an offscreen DOM tree.
@@ -29,15 +31,21 @@ const content = document.querySelector(".content");
         }
 
         template.querySelectorAll(".nestedGrid .weather span")[0].textContent = msjDaysAway;
-        if(item.webformatURL == ''){
+
+        let responsePixabay =  await pixabayImage(item.city,item.country)
+        let webformatURL = '';
+        if(responsePixabay != undefined){
+          webformatURL = responsePixabay.webformatURL
+        }
+
+        if(webformatURL == ''){
           template.getElementById("img1").setAttribute("src",GlobeTrotter)
         }else {
-          template.getElementById("img1").setAttribute("src",item.webformatURL)
+          template.getElementById("img1").setAttribute("src",webformatURL)
         }
        
         template.querySelectorAll(".nestedGrid .dataTrip .buttons .greenButton")[1].dataset.id = index;
-
-        if(daysAway === 0){
+        if(daysAway == 0){
           let response =  await currentWeather(item.city)
           template.querySelectorAll(".nestedGrid .weather span")[1].textContent = `Current weather for then is:`;
           if(response != undefined){
@@ -49,9 +57,9 @@ const content = document.querySelector(".content");
           }
 
         }else {
-
           try {
             let response =  await forecastWeather(item.city,item.iso2Country,item.departing)
+            template.querySelectorAll(".nestedGrid .weather span")[1].textContent = `Tipical weather for then is:`;
             if(response != undefined){
               template.querySelectorAll(".nestedGrid .weather span")[2].textContent = `Temperature : High - ${response.high_temp} , low - ${response.low_temp} (Celsius)`;
               template.querySelectorAll(".nestedGrid .weather span")[3].textContent = `Weather Condition: ${response.weather.description}`;
@@ -60,7 +68,6 @@ const content = document.querySelector(".content");
               template.querySelectorAll(".nestedGrid .weather span")[3].textContent = `...`;
             }
           } catch (error) {
-            // console.log("error en forecast",error)
             template.querySelectorAll(".nestedGrid .weather span")[2].textContent = `...`;
             template.querySelectorAll(".nestedGrid .weather span")[3].textContent = `...`;
           }

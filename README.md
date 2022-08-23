@@ -1,6 +1,8 @@
 # Travel APP project
 
-This project analyzes the inserted text and determines what emotion or feeling the text is trying to express. The [meaning cloud](https://www.meaningcloud.com/products/sentiment-analysis) API called sentiment-analysis is used 
+This application allows you to know weather data such as temperature and rainfall based on real weather stations that are measuring weather conditions in cities all over the world all the time.
+
+You must enter the country, city and date of travel so that the application determines the weather in real time and the forecast weather. 
 the site is published at [lightuniverso.com](https://www.lightuniverso.com)
 
 ## Installation

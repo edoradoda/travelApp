@@ -1,9 +1,7 @@
 import { showMsj } from './showMsj'
 import { showTrips } from './showTrips'
-import { pixabayImage } from './pixabayImage'
 
-
-const saveTrip = async () => {
+const saveTrip = async (test = false) => {
   const country = document.getElementById('countryList');
   const city = document.getElementById('cityList');
   const date = document.getElementById('departing');
@@ -22,25 +20,18 @@ const saveTrip = async () => {
   }
   let  countries = JSON.parse(localStorage.getItem('countries'))
   let iso2 = (countries.filter(value=>value.name == country.value))[0].iso2
-
   if(msj == ''){
       let  trips = JSON.parse(localStorage.getItem('trips'))
       if(trips == null){
           trips =[]
       }
 
-      let response =  await pixabayImage(city.value,country.value)
-      let webformatURL = '';
-      if(response != undefined){
-        webformatURL = response.webformatURL
-      }
       const trip= {
               country : country.value,
               iso2Country : iso2,
               city : city.value,
               departing: date.value,
               flightInfo : "",
-              webformatURL : webformatURL
           }
 
       trips.push(trip);
@@ -49,8 +40,11 @@ const saveTrip = async () => {
       country.value = '';
       city.value = '';
       date.value = '';
-      showTrips();
-      showMsj(msj)
+      if(!test){
+        showTrips()
+        showMsj(msj)
+      }
+     
   }
 };
 

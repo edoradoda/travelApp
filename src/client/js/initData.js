@@ -11,6 +11,9 @@ const dataCities = JSON.parse(localStorage.getItem('cities'))
 const dataCountries = JSON.parse(localStorage.getItem('countries'))
 let  trips = JSON.parse(localStorage.getItem('trips'))
 
+/**
+ * @description :  Load the initial data such as countries and cities around the world
+ */
 const initData = () => {
     if(dataCities == null){
         fetch("https://countriesnow.space/api/v0.1/countries", requestOptions)

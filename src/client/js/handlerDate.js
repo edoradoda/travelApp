@@ -1,5 +1,4 @@
 const handlerDate = (event) => {
-    // console.log("date selected",event.target.value)
     const date = document.getElementById("departing");
 
     if(date.value != ""){

@@ -7,10 +7,10 @@ the site is published at [lightuniverso.com](https://www.lightuniverso.com)
 
 ## Installation
 
-get code from [github](https://github.com/edoradoda/fend.git), branch  refresh-2019.
+get code from [github](https://github.com/edoradoda/travelApp.git).
 Remember that once you clone, you will still need to install everything:
 
-`cd` into your new folder `cd projects\evaluates-new-nlp` and run:
+`cd` into your new folder `cd travelApp` and run:
 ```bash
 npm install
 #run nodejs express

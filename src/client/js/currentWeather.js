@@ -3,6 +3,11 @@ import { getDataApi } from './getDataApi'
 // Personal API Key for OpenWeatherMap API
 const apiKey = '50b167ff30e937171afa4f012fd8323e&units=imperial';//units=metric Celsius
 
+/**
+ * @Description : get the current weather based on the city
+ * @param {string} city 
+ * @returns a promise with the current weather observation for the city
+ */
 const currentWeather = (city) => {
     return new Promise(function(resolve,reject){
       getDataApi( `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`)

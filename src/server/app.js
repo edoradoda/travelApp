@@ -1,6 +1,5 @@
 var path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
 const dotenv = require('dotenv');
 dotenv.config();
 const bodyParser = require('body-parser')
@@ -34,10 +33,6 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-app.get('/test', function (req, res) {
-    console.log(`Your API key is ${process.env.API_KEY}`);
-    res.send(mockAPIResponse)
-})
 
 
 app.post('/testPost', function (req, res) {

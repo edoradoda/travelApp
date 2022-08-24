@@ -1,11 +1,4 @@
-var path = require('path')
-const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
-const dotenv = require('dotenv');
-dotenv.config();
-const bodyParser = require('body-parser')
-const axios = require('axios')
-const cors = require("cors");
+
 const app = require("./app");
 
 

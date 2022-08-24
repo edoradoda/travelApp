@@ -14,13 +14,7 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-import  Logo from './images/paris.jpg';
 import  Favicon from './images/favicon.png';
-import  GlobeTrotter from './images/globeTrotter.jpg';
-
-// const element= document.getElementById("img1");
-// element.src=Logo;
-    // <link rel="icon" type="image/x-icon" href=""> 
 
 const link = document.createElement('link');
 link.href = Favicon;
